@@ -1,6 +1,6 @@
 # mount the GHC source code into /home/ghc
 #
-#    sudo docker run --rm -i -t -v `pwd`:/home/ghc gregweber/ghc-haskell-dev /bin/bash
+#    sudo docker run --rm -i -t -v `pwd`:/home/ghc akst/ghc-haskell-dev /bin/bash
 #
 # There is one final setup step to run once you have the image up:
 #
@@ -16,7 +16,8 @@
 # https://ghc.haskell.org/trac/ghc/wiki/Building/Hacking
 
 FROM debian:testing
-MAINTAINER Greg Weber
+# forked from Greg Webs
+MAINTAINER Angus Thomsen
 
 ## add ppa for ubuntu trusty haskell packages
 # from darinmorrison/haskell
@@ -41,6 +42,9 @@ RUN apt-get update && apt-get install -y \
   alex \
   cabal-install-1.22 \
   happy \
+  
+  # for downloading zips
+  curl \
 
   # development conveniences
   sudo xutils-dev \
